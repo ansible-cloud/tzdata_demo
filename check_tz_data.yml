@@ -1,0 +1,15 @@
+---
+# https://access.redhat.com/errata/RHBA-2022:8785
+- name: playbook checks if RHBA-2022:8785 is applied
+  hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: run timedatectl command for Ciudad Juarez
+      shell: timedatectl --no-pager list-timezones | grep America/Ciudad_Juarez
+      register: timedatectl_info
+
+    - name: check for America/Ciudad_Juarez in results
+      ansible.builtin.assert:
+        that:
+          - "'America/Ciudad_Juarez' in timedatectl_info.stdout"

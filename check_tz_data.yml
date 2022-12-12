@@ -1,7 +1,7 @@
 ---
 # https://access.redhat.com/errata/RHBA-2022:8785
 - name: playbook checks if RHBA-2022:8785 is applied
-  hosts: localhost
+  hosts: all
   gather_facts: false
   tasks:
 
